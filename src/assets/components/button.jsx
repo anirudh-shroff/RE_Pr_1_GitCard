@@ -1,3 +1,5 @@
+import '../../index.css'
+
 const Button = ({ text, fillType = 'solid', url = null, clickHandler = null }) => {
 
     if (url) {
