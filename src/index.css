@@ -67,10 +67,11 @@ body {
 }
 
 .search {
-  max-width: fit-content;
+  width: min(90%, clamp(320px, 45vw, 420px));
   margin-top: 20px;
   margin-bottom: 20px;
   display: flex;
+  justify-content: center;
   gap: 1rem;
 }
 
@@ -80,20 +81,29 @@ body {
   text-align: center;
   padding: clamp(0.6rem, 1.5vw, 0.9rem) clamp(0.8rem, 2.5vw, 1.2rem);
   border-radius: clamp(8px, 2vw, 12px); */
-  width: 100%;
+  width: 60%;
   padding: clamp(0.65rem, 1.6vw, 0.9rem) clamp(0.9rem, 2.5vw, 1.3rem);
-  background: rgba(255, 255, 255, 0.12);
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0.05));
   border: 1px solid rgba(255, 255, 255, 0.25);
   color: white;
   backdrop-filter: blur(10px);
   border-radius: clamp(10px, 2vw, 14px);
 }
 
+.exportCard {
+  background: linear-gradient(135deg,
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0.05));
+}
+
+
 
 .gitCard {
   margin: auto;
   /* max-width: 50vh; */
-  width: min(92%, clamp(320px, 45vw, 420px));
+  width: min(100%, clamp(320px, 45vw, 420px));
   display: flex;
   flex-direction: column;
   padding: 10px;
@@ -119,3 +129,12 @@ body {
     width: 25%
   } */
 /* } */
+
+.main-card {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  justify-content: center;
+
+}

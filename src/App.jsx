@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import './index.css'
 import Button from './assets/components/button';
-import * as htmlToImage from 'html-to-image';
 import { toPng } from 'html-to-image';
 import './App.css'
 
@@ -11,7 +10,7 @@ const App = () => {
     const [error, setError] = useState("");
 
     const handleClick = async () => {
-        console.log(username);
+        // console.log(username);
 
         try {
             const response = await fetch(`https://api.github.com/users/${username}`);
@@ -32,10 +31,15 @@ const App = () => {
         const card = document.getElementById('userCard');
         if (!card) return;
 
+        card.classList.add('exportCard');
+
+        await new Promise((res) => setTimeout(res, 300));
+
         try {
             const dataUrl = await toPng(card, {
                 cacheBust: true,
-                useCORS: true,
+                backgroundColor: '#0d1117',
+                pixelRatio: 2,
             });
 
             const link = document.createElement('a');
@@ -44,12 +48,15 @@ const App = () => {
             link.click();
         } catch (err) {
             console.error('Image Download Failed:', err);
+        } finally {
+            card.classList.remove('exportCard');
         }
+
     };
 
     return (
-        <>
-            <div className='m-auto search'>
+        <div className='main-card'>
+            <div className='search'>
                 <input
                     type="text"
                     placeholder='Enter Github Username'
@@ -64,15 +71,15 @@ const App = () => {
             {error && <p style={{ color: "red" }}>{error}</p>}
 
             {userData && (
-                <div>
+                <div >
                     <div id='userCard' className='gitCard'>
-                        <h2>{userData.name}</h2>
+                        <h2>{userData.name || userData.login}</h2>
                         <img src={userData.avatar_url} alt={userData.login} width="100" crossOrigin="anonymous" />
                         <p>Followers: {userData.followers}</p>
                         <p>Following: {userData.following}</p>
                         <p>{userData.bio || `Bio N/A`}</p>
                         <p>Repositories: {userData.public_repos}</p>
-                        <p>Comapny: {userData.company || `N/A`}</p>
+                        <p>Comapny: {userData.company || 'N/A'}</p>
                         <p>{userData.location || `N/A`}</p>
                     </div>
 
@@ -82,7 +89,7 @@ const App = () => {
                     </div>
                 </div>
             )}
-        </>
+        </div>
     )
 }
 
