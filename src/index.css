@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Google Sans Flex 120pt';
 }
 
 body {
@@ -27,6 +28,7 @@ body {
   line-height: 1;
   padding: clamp(0.6rem, 1.4vw, 0.85rem) clamp(1.2rem, 3vw, 1.6rem);
   border-radius: clamp(10px, 2.5vw, 14px);
+  font-size: 16px;
 
 }
 
@@ -98,7 +100,15 @@ body {
       rgba(255, 255, 255, 0.05));
 }
 
+.follow{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
 
+.follow p{
+  text-align: center;
+}
 
 .gitCard {
   margin: auto;
@@ -137,4 +147,18 @@ body {
   flex-direction: column;
   justify-content: center;
 
+}
+
+.bio{
+  text-align: center;
+  font-weight: 300;
+  margin: 2rem 0.5rem;
+}
+
+.follow img{
+  border-radius: 50%;
+}
+
+.gitCard h2{
+  margin: 0.5rem 0rem;
 }

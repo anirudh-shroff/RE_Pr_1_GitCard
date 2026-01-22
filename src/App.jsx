@@ -3,6 +3,7 @@ import './index.css'
 import Button from './assets/components/button';
 import { toPng } from 'html-to-image';
 import './App.css'
+import './assets/fonts/stylesheet.css'
 
 const App = () => {
     const [username, setUsername] = useState("");
@@ -74,13 +75,32 @@ const App = () => {
                 <div >
                     <div id='userCard' className='gitCard'>
                         <h2>{userData.name || userData.login}</h2>
-                        <img src={userData.avatar_url} alt={userData.login} width="100" crossOrigin="anonymous" />
-                        <p>Followers: {userData.followers}</p>
-                        <p>Following: {userData.following}</p>
-                        <p>{userData.bio || `Bio N/A`}</p>
-                        <p>Repositories: {userData.public_repos}</p>
-                        <p>Comapny: {userData.company || 'N/A'}</p>
-                        <p>{userData.location || `N/A`}</p>
+                        <div className='follow'>
+                            <img src={userData.avatar_url} alt={userData.login} width="100" crossOrigin="anonymous" />
+                            <p>
+                                <i>followers</i> <br />
+                                <span>{userData.followers}</span>
+                            </p>
+                            <p>
+                                <i>following</i> <br />
+                                <span>{userData.following}</span>
+                            </p>
+                            <p>
+                                <i>repos</i> <br />
+                                <span>{userData.public_repos}</span>
+                            </p>
+                        </div>
+                        <p className='bio'>
+                            <span className=''> <i>{userData.bio || `Bio N/A`}</i></span>
+                        </p>
+                        <div className='follow'>
+                            <p>Working at<br />
+                                <span>{userData.company || 'N/A'}</span>
+                            </p>
+                            <p>Location <br />
+                                <span>{userData.location || `N/A`}</span>
+                            </p>
+                        </div>
                     </div>
 
                     <div className="buttons">
